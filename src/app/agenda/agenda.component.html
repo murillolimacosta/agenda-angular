@@ -1,0 +1,101 @@
+<div class="card-container">
+
+
+    <mat-card class="custom-card">
+        <mat-card-header>
+          <mat-card-title >{{ newContact ? titleNew : titleEdit }}</mat-card-title>
+          <mat-card-subtitle>Formulário</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="contatoForm" (ngSubmit)="onSubmit()">
+      
+            <br><br>
+      
+            <mat-form-field class="w-100">
+              <mat-label>Nome</mat-label>
+              <mat-icon matPrefix>person</mat-icon>
+              <input matInput formControlName="nome">
+            </mat-form-field>
+      
+            <mat-form-field class="w-50-5 mr-5">
+              <mat-label>Telefone</mat-label>
+              <mat-icon matPrefix>phone</mat-icon>
+              <input matInput formControlName="telefone">
+            </mat-form-field>
+      
+            <mat-form-field class="w-50-5 ml-5">
+              <mat-label>Email</mat-label>
+              <mat-icon matPrefix>email</mat-icon>
+              <input matInput formControlName="email">
+            </mat-form-field>
+      
+            <mat-form-field class="w-100">
+              <mat-label>Endereço</mat-label>
+              <mat-icon matPrefix>home</mat-icon>
+              <input matInput formControlName="endereco">
+            </mat-form-field>
+      
+            <br><br>
+      
+            <button type="submit" *ngIf="newContact" mat-raised-button color="primary" class="float-r">Inserir</button>
+            <button type="submit" *ngIf="!newContact" mat-raised-button color="primary" class="float-r">Editar</button>
+            <button type="button" *ngIf="!newContact" mat-raised-button color="secondary" class="mr-5 float-r" (click)="new()">Novo</button>
+
+
+          </form>
+        </mat-card-content>
+      </mat-card>
+      
+      <mat-card class="custom-card">
+        <mat-card-header>
+          <mat-card-title>Agenda</mat-card-title>
+          <mat-card-subtitle>Listagem</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            
+            <br><br>
+            <table mat-table [dataSource]="dataSource" class="">
+
+                <ng-container matColumnDef="nome">
+                  <th mat-header-cell *matHeaderCellDef> Nome </th>
+                  <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="telefone">
+                  <th mat-header-cell *matHeaderCellDef> Telefone </th>
+                  <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef> Email </th>
+                  <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="endereco">
+                  <th mat-header-cell *matHeaderCellDef> Endereço </th>
+                  <td mat-cell *matCellDef="let element"> {{element.endereco}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="acoes">
+                  <th mat-header-cell *matHeaderCellDef> Ações </th>
+                  <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="setForm(element)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="delete(element)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              
+              
+              
+
+        </mat-card-content>
+      </mat-card>
+
+</div>

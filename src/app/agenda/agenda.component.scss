@@ -1,0 +1,36 @@
+.card-container {
+    display: flex;
+    justify-content: space-between; /* Distribui os cartões horizontalmente */
+    flex-wrap: wrap; /* Permite que os cartões quebrem para a próxima linha se necessário */
+}
+
+.custom-card {
+    flex-grow: 1; /* Cada cartão cresce igualmente para ocupar todo o espaço disponível */
+    margin: 16px; /* Espaçamento externo de 16 pixels em todos os lados */
+    max-width: calc(50% - 32px); /* Define a largura máxima de cada cartão (50% com margens) */
+    box-sizing: border-box; /* Inclui margens na largura máxima */
+}
+  
+.w-100{
+    width: 100%;
+}
+
+.w-50-5{
+    width: calc(50% - 5px)
+}
+
+.mr-5{
+    margin-right: 5px;
+}
+
+.ml-5{
+    margin-left: 5px;
+}
+
+.float-r{
+    float: right;
+}
+
+.dialog-width {
+    width: 300px; /* Defina a largura desejada */
+  }
